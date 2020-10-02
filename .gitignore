@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+.pio
+.vscode
+arduino_secrets.h
