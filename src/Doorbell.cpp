@@ -63,6 +63,7 @@ void connectToBroker() {
  */
 void connectWiFi() {
   DBG_OUTPUT_PORT.print("Connecting to WiFi..");
+  WiFi.enableAP(false);
   WiFi.hostname(hostName);
   WiFi.begin(newWifiSSID, newWifiPasskey);
   WiFi.setAutoReconnect(true);
@@ -112,7 +113,7 @@ long lastMicros = 0L;
 void loop() {
   if (mySwitch.available()) {
     blink();
-    if (mySwitch.getReceivedValue() == 117983 && mySwitch.getReceivedBitlength() == 17 && mySwitch.getReceivedDelay() == 362 && mySwitch.getReceivedProtocol() == 10) {
+    if (mySwitch.getReceivedValue() == 117983 && mySwitch.getReceivedBitlength() == 17 /*&& mySwitch.getReceivedDelay() == 362*/ && mySwitch.getReceivedProtocol() == 10) {
       long now = micros();
       if (lastMicros == 0 || now - lastMicros > 600000) {
         DBG_OUTPUT_PORT.print("Doorbell pressed ");
